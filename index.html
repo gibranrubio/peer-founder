@@ -96,6 +96,8 @@
       <p style="margin:0 0 8px">We only accept people who meet two tests: trust and earnest learning.</p>
       <p style="margin:0 0 8px">Fill this out. It takes two minutes.</p>
 
+      <iframe name="sheetSink" id="sheetSink" style="display:none"></iframe>
+
       <form id="applyForm" onsubmit="return handleApply(event)">
         <div class="row">
           <div class="col">
@@ -190,39 +192,49 @@
     }
 
     if(GOOGLE_SHEETS_WEBAPP_URL){
+      // Submit using a real form POST to a hidden iframe.
+      // This avoids CORS issues that often break fetch() with Apps Script.
+
+      // Ensure submitted_at is included
+      let sa = form.querySelector("input[name='submitted_at']");
+      if(!sa){
+        sa = document.createElement("input");
+        sa.type = "hidden";
+        sa.name = "submitted_at";
+        form.appendChild(sa);
+      }
+      sa.value = new Date().toISOString();
+
+      form.action = GOOGLE_SHEETS_WEBAPP_URL;
+      form.method = "POST";
+      form.target = "sheetSink";
+
+      // Disable buttons to prevent double submit
+      const buttons = form.querySelectorAll("button");
+      buttons.forEach(b => b.disabled = true);
+
       status.textContent = "Submitting...";
 
-      const payload = {
-        name: (data.get("name")||"").toString().trim(),
-        email: (data.get("email")||"").toString().trim(),
-        city: (data.get("city")||"").toString().trim(),
-        arena: (data.get("arena")||"").toString().trim(),
-        date: (data.get("date")||"").toString().trim(),
-        building: (data.get("building")||"").toString().trim(),
-        learning: (data.get("learning")||"").toString().trim(),
-        trust: (data.get("trust")||"").toString().trim(),
-        submitted_at: new Date().toISOString()
-      };
-
-      fetch(GOOGLE_SHEETS_WEBAPP_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      })
-      .then(r => r.text())
-      .then((txt) => {
-        // If your Apps Script returns JSON, you can inspect it here
-        // console.log(txt);
-        if(typeof txt === "string" && txt.toLowerCase().includes("error")){
-          status.textContent = "Submission may have failed. Check your Sheet.";
-          return;
-        }
+      // When iframe loads, treat as success
+      const sink = document.getElementById("sheetSink");
+      const onLoad = () => {
+        sink.removeEventListener("load", onLoad);
         status.textContent = "Submitted. You will hear back soon.";
         form.reset();
-      })
-      .catch(() => {
-        status.textContent = "Submission failed. Please try again.";
-      });
+        buttons.forEach(b => b.disabled = false);
+      };
+      sink.addEventListener("load", onLoad);
+
+      form.submit();
+
+      // Safety timeout in case iframe never loads
+      setTimeout(() => {
+        buttons.forEach(b => b.disabled = false);
+        if(status.textContent === "Submitting..."){
+          status.textContent = "Submitted. Check your Google Sheet.";
+          form.reset();
+        }
+      }, 2500);
 
       return false;
     }
@@ -260,46 +272,54 @@
 <!--
 APPS SCRIPT (Google Sheets)
 
-1) Open your Google Sheet
-2) Extensions -> Apps Script
-3) Paste this code
-4) Deploy -> New deployment -> Web app
-   Execute as: Me
-   Who has access: Anyone
-5) Copy the Web app URL and paste it into GOOGLE_SHEETS_WEBAPP_URL above
+Your web app executions are failing because getActiveSpreadsheet() is null in a standalone deployment.
+Fix by opening the sheet explicitly by ID.
+
+Sheet ID:
+10utyS5IvgKtPtbcbQ84g2YsYHXk-GqqzWlbME-EtUP0
+
+1) Open Apps Script
+2) Paste this as the entire script
+3) Deploy -> Manage deployments -> Edit -> Deploy
+4) Visit your /exec URL, it should show: live
+
+const SHEET_ID = "10utyS5IvgKtPtbcbQ84g2YsYHXk-GqqzWlbME-EtUP0";
+
+function getSheet_() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  let sheet = ss.getSheetByName("Applications");
+  if (!sheet) {
+    sheet = ss.insertSheet("Applications");
+    sheet.appendRow(["submitted_at","name","email","city","arena","date","building","learning","trust"]);
+  }
+  return sheet;
+}
 
 function doPost(e) {
   try {
-    var raw = e.postData && e.postData.contents ? e.postData.contents : "{}";
-    var data = JSON.parse(raw);
+    const p = (e && e.parameter) ? e.parameter : {};
 
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName('Applications');
-    if (!sheet) {
-      sheet = ss.insertSheet('Applications');
-      sheet.appendRow(['submitted_at','name','email','city','arena','date','building','learning','trust']);
-    }
-
+    const sheet = getSheet_();
     sheet.appendRow([
-      data.submitted_at || new Date().toISOString(),
-      data.name || "",
-      data.email || "",
-      data.city || "",
-      data.arena || "",
-      data.date || "",
-      data.building || "",
-      data.learning || "",
-      data.trust || ""
+      p.submitted_at || new Date().toISOString(),
+      p.name || "",
+      p.email || "",
+      p.city || "",
+      p.arena || "",
+      p.date || "",
+      p.building || "",
+      p.learning || "",
+      p.trust || ""
     ]);
 
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: true }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput("ok").setMimeType(ContentService.MimeType.TEXT);
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: false, error: String(err) }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput("error: " + String(err)).setMimeType(ContentService.MimeType.TEXT);
   }
+}
+
+function doGet() {
+  return ContentService.createTextOutput("live").setMimeType(ContentService.MimeType.TEXT);
 }
 -->
 
