@@ -210,13 +210,19 @@
         body: JSON.stringify(payload)
       })
       .then(r => r.text())
-      .then(() => {
+      .then((txt) => {
+        // If your Apps Script returns JSON, you can inspect it here
+        // console.log(txt);
+        if(typeof txt === "string" && txt.toLowerCase().includes("error")){
+          status.textContent = "Submission may have failed. Check your Sheet.";
+          return;
+        }
         status.textContent = "Submitted. You will hear back soon.";
         form.reset();
       })
       .catch(() => {
         status.textContent = "Submission failed. Please try again.";
-      })();
+      });
 
       return false;
     }
