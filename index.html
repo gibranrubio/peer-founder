@@ -5,54 +5,297 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Founder Lectures</title>
 <style>
-body{margin:0;background:#c0c0c0;color:#000;font-family:Tahoma,Arial,sans-serif;font-size:14px}
-.window{max-width:900px;margin:20px auto;border:2px solid #808080;box-shadow:inset 1px 1px #fff,inset -1px -1px #404040}
-.title{background:#000080;color:#fff;padding:6px;font-weight:bold}
-.content{padding:12px}
-.btn{display:inline-block;padding:8px 12px;border:1px solid #404040;background:#c0c0c0;box-shadow:inset 1px 1px #fff,inset -1px -1px #808080;text-decoration:none;color:#000;font-weight:bold}
-.panel{margin-top:12px;padding:10px;border:1px solid #404040;box-shadow:inset 1px 1px #fff,inset -1px -1px #808080}
+  body{margin:0;background:#c0c0c0;color:#000;font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:1.35}
+  .window{max-width:900px;margin:20px auto;border:2px solid #808080;box-shadow:inset 1px 1px #fff,inset -1px -1px #404040}
+  .title{background:#000080;color:#fff;padding:6px;font-weight:bold}
+  .content{padding:12px}
+  .btn{display:inline-block;padding:8px 12px;border:1px solid #404040;background:#c0c0c0;box-shadow:inset 1px 1px #fff,inset -1px -1px #808080;text-decoration:none;color:#000;font-weight:bold;cursor:pointer}
+  .btn:active{box-shadow:inset -1px -1px #fff,inset 1px 1px #808080}
+  .panel{margin-top:12px;padding:10px;border:1px solid #404040;box-shadow:inset 1px 1px #fff,inset -1px -1px #808080}
+  label{display:block;margin:8px 0 4px;font-weight:bold}
+  input,textarea,select{width:100%;box-sizing:border-box;font-family:inherit;font-size:14px;padding:6px 7px;border:1px solid #404040;box-shadow:inset 1px 1px #fff,inset -1px -1px #9a9a9a;background:#fff;color:#000}
+  textarea{min-height:84px;resize:vertical}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  .col{flex:1 1 220px}
+  .small{font-size:12px;margin-top:6px}
+  .notice{font-size:12px;margin-top:8px}
+  hr{border:0;border-top:1px solid #808080;box-shadow:0 1px #fff;margin:10px 0}
 </style>
 </head>
 <body>
 <div class="window">
   <div class="title">Founder Lectures</div>
   <div class="content">
-    <h1>A physical peer engine for builders</h1>
-    <p>One room. One idea. One shared climb.</p>
-    <p>Founder Lectures recreates the peer compounding engine that built outliers like MrBeast.</p>
-    <a class="btn" href="#apply">Apply to Attend</a>
+    <h1 style="margin:0 0 6px">A physical peer engine for builders</h1>
+    <p style="margin:0 0 8px">One room. One idea. One shared climb.</p>
+    <p style="margin:0">Founder Lectures recreates the peer compounding engine that built outliers like MrBeast.</p>
 
-    <div class="panel">
-      <h2>The problem</h2>
-      <p>Most learning is lonely. You read, you watch, you try alone. Progress is slow.</p>
-      <p>The people who move fastest learn together and trade real notes.</p>
+    <div class="panel" id="details">
+      <h2 style="margin:0 0 8px;font-size:16px">Next dates</h2>
+      <p style="margin:0 0 6px"><strong>Austin, TX</strong> · Venue shared after acceptance</p>
+      <ul style="margin:6px 0 6px 18px">
+        <li><strong>Thu Feb 6</strong> · 6:30pm to 9:00pm</li>
+        <li><strong>Thu Mar 6</strong> · 6:30pm to 9:00pm</li>
+        <li><strong>Thu Apr 3</strong> · 6:30pm to 9:00pm</li>
+      </ul>
+      <p style="margin:0 0 8px">Capacity: 30 seats. This is a room, not a crowd.</p>
+      <a class="btn" href="#apply">Apply to Attend</a>
     </div>
 
     <div class="panel">
-      <h2>The proof</h2>
-      <p>MrBeast grew inside a private peer loop that shared best practices obsessively. All four became millionaires.</p>
+      <h2 style="margin:0 0 8px;font-size:16px">The problem</h2>
+      <p style="margin:0 0 8px">Most people are trying to get better in isolation.</p>
+      <p style="margin:0 0 8px">They read books. They watch videos. They listen to podcasts. They try things alone.</p>
+      <p style="margin:0 0 8px">Progress feels slow not because they lack intelligence, but because learning alone does not compound.</p>
+      <p style="margin:0 0 8px">The fastest moving people do something different.</p>
+      <p style="margin:0 0 8px">They find peers who are equally obsessed, equally earnest, and equally willing to trade real notes.</p>
+      <p style="margin:0">They do not learn faster because they work harder. They learn faster because they learn together.</p>
     </div>
 
     <div class="panel">
-      <h2>What happens inside</h2>
-      <p>One builder shares one tested lesson. Then the room trades notes.</p>
+      <h2 style="margin:0 0 8px;font-size:16px">The proof</h2>
+      <p style="margin:0 0 8px">Before he was MrBeast, Jimmy Donaldson was one of four young creators who were obsessed with YouTube.</p>
+      <p style="margin:0 0 8px">They were not competing. They were co climbing.</p>
+      <p style="margin:0 0 8px">They spent years on private calls sharing best practices obsessively.</p>
+      <p style="margin:0 0 8px">Tiny mechanics. Specific experiments. What worked. What failed. What changed conversion.</p>
+      <p style="margin:0 0 8px">All four became millionaires.</p>
+      <p style="margin:0 0 8px">Jimmy later said that if any random fifth person had been on those calls, they would have become one too.</p>
+      <p style="margin:0 0 8px">Not because of talent. Because four people sharing 10,000 hours becomes 40,000 hours of progress.</p>
+      <p style="margin:0">Founder Lectures rebuilds this engine in real life.</p>
     </div>
 
     <div class="panel">
-      <h2>The filter</h2>
-      <p>Trust and earnest learning. No posturing. Real builders only.</p>
+      <h2 style="margin:0 0 8px;font-size:16px">What happens inside</h2>
+      <p style="margin:0 0 8px">Every Founder Lecture follows the same operating loop.</p>
+      <p style="margin:0 0 8px">One builder shares one real mechanic.</p>
+      <p style="margin:0 0 8px">Something they tested. Something that failed. Something that finally worked.</p>
+      <p style="margin:0 0 8px">Not stories. Not opinions. Not inspiration.</p>
+      <p style="margin:0 0 8px">Then the room trades notes.</p>
+      <p style="margin:0 0 8px">Specifics only. Experiments. Constraints. Adaptations.</p>
+      <p style="margin:0">Everyone leaves with one idea worth implementing, variations tested by peers, and new co climbers in the same arena.</p>
     </div>
 
     <div class="panel">
-      <h2>Circles</h2>
-      <p>Small peer groups of 6 to 10 for ongoing monthly sessions.</p>
+      <h2 style="margin:0 0 8px;font-size:16px">The filter</h2>
+      <p style="margin:0 0 8px">Founder Lectures is not for everyone.</p>
+      <p style="margin:0 0 8px">We only accept people who meet two tests.</p>
+      <p style="margin:0 0 8px">Trust. No zero sum thinking. No posturing. No elbowing.</p>
+      <p style="margin:0 0 8px">Earnest learning. You are building or practicing in real life. You are learning on your own dime, in your own time.</p>
+      <p style="margin:0">If you are doing the work, you belong here. If you are looking for status, this is not your room.</p>
+    </div>
+
+    <div class="panel">
+      <h2 style="margin:0 0 8px;font-size:16px">Circles</h2>
+      <p style="margin:0 0 8px">Founder Lectures does not end when the night ends.</p>
+      <p style="margin:0 0 8px">Attendees are placed into small peer circles. Six to ten people. Shared arena. Monthly sessions.</p>
+      <p style="margin:0">These circles become your real peer group. Your co climbers. This is the compounding engine.</p>
     </div>
 
     <div class="panel" id="apply">
-      <h2>Apply to Attend</h2>
-      <p>Email: apply@founderlectures.com</p>
+      <h2 style="margin:0 0 8px;font-size:16px">Apply to Attend</h2>
+      <p style="margin:0 0 8px">We only accept people who meet two tests: trust and earnest learning.</p>
+      <p style="margin:0 0 8px">Fill this out. It takes two minutes.</p>
+
+      <form id="applyForm" onsubmit="return handleApply(event)">
+        <div class="row">
+          <div class="col">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required />
+          </div>
+          <div class="col">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="city">City</label>
+            <input id="city" name="city" placeholder="Austin, TX" autocomplete="address-level2" />
+          </div>
+          <div class="col">
+            <label for="arena">Arena</label>
+            <select id="arena" name="arena" required>
+              <option value="">Select one</option>
+              <option>Founder / Operator</option>
+              <option>Creator</option>
+              <option>Investor</option>
+              <option>Engineer</option>
+              <option>Design / Product</option>
+              <option>Sales / GTM</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="date">Which date do you want</label>
+        <select id="date" name="date" required>
+          <option value="">Select a date</option>
+          <option>Thu Feb 6 · 6:30pm to 9:00pm</option>
+          <option>Thu Mar 6 · 6:30pm to 9:00pm</option>
+          <option>Thu Apr 3 · 6:30pm to 9:00pm</option>
+        </select>
+
+        <label for="building">What are you building or practicing right now</label>
+        <textarea id="building" name="building" placeholder="Be specific. What are you working on this month" required></textarea>
+
+        <label for="learning">What are you learning on your own dime, in your own time</label>
+        <textarea id="learning" name="learning" placeholder="What are you studying or testing outside of work" required></textarea>
+
+        <label for="trust">How do you show trust in a room of peers</label>
+        <textarea id="trust" name="trust" placeholder="Short answer is fine" required></textarea>
+
+        <div class="row" style="align-items:center;">
+          <button class="btn" type="submit">Submit Application</button>
+          <button class="btn" type="button" onclick="fillExample()">Fill Example</button>
+          <span id="status" class="notice"></span>
+        </div>
+
+        <hr />
+
+        <p class="small">Submissions go directly to Google Sheets.</p>
+      </form>
     </div>
+
+    
   </div>
 </div>
+
+<script>
+  // 1) Create a Google Sheet
+  // 2) Extensions -> Apps Script
+  // 3) Paste the Apps Script at the bottom of this file (search "APPS SCRIPT")
+  // 4) Deploy -> New deployment -> Web app
+  //    Execute as: Me
+  //    Who has access: Anyone
+  // 5) Paste the Web App URL here
+  const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxXQNhKl9IrNbsjZiSgSyay9abymfH45GA3M5P7fDTsX7XxaRia4MP1p6fHFDxp1tb9/exec";
+
+  function handleApply(e){
+    e.preventDefault();
+
+    const status = document.getElementById("status");
+    status.textContent = "";
+
+    const form = document.getElementById("applyForm");
+    const data = new FormData(form);
+
+    const required = ["name","email","arena","date","building","learning","trust"];
+    for(const k of required){
+      const v = (data.get(k) || "").toString().trim();
+      if(!v){
+        status.textContent = "Please fill all required fields.";
+        return false;
+      }
+    }
+
+    if(GOOGLE_SHEETS_WEBAPP_URL){
+      status.textContent = "Submitting...";
+
+      const payload = {
+        name: (data.get("name")||"").toString().trim(),
+        email: (data.get("email")||"").toString().trim(),
+        city: (data.get("city")||"").toString().trim(),
+        arena: (data.get("arena")||"").toString().trim(),
+        date: (data.get("date")||"").toString().trim(),
+        building: (data.get("building")||"").toString().trim(),
+        learning: (data.get("learning")||"").toString().trim(),
+        trust: (data.get("trust")||"").toString().trim(),
+        submitted_at: new Date().toISOString()
+      };
+
+      fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      })
+      .then(r => r.text())
+      .then(() => {
+        status.textContent = "Submitted. You will hear back soon.";
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Submission failed. Please try again.";
+      })();
+
+      return false;
+    }
+
+    status.textContent = "Form is not configured.";
+    return false;
+  }
+
+  function fillExample(){
+    document.getElementById("name").value = "Your Name";
+    document.getElementById("email").value = "you@example.com";
+    document.getElementById("city").value = "Austin, TX";
+    document.getElementById("arena").value = "Founder / Operator";
+    document.getElementById("date").value = "Thu Feb 6 · 6:30pm to 9:00pm";
+    document.getElementById("building").value = "I am building a real business under constraints. This month I am tightening one system: sales, ops, or product.";
+    document.getElementById("learning").value = "I am learning on my own dime. I run small experiments weekly and write down what changes my behavior.";
+    document.getElementById("trust").value = "I share specifics, I do not posture, and I protect the room. I treat peers as co climbing, not rivals.";
+  }
+
+  // Lightweight self-checks so preview errors are obvious
+  (function selfTest(){
+    const checks = [
+      ["applyForm exists", !!document.getElementById("applyForm")],
+      ["status exists", !!document.getElementById("status")],
+      ["submit button exists", !!document.querySelector("button[type='submit']")]
+    ];
+
+    const failed = checks.filter(c => !c[1]).map(c => c[0]);
+    if(failed.length){
+      console.error("Self-test failed:", failed);
+    }
+  })();
+</script>
+
+<!--
+APPS SCRIPT (Google Sheets)
+
+1) Open your Google Sheet
+2) Extensions -> Apps Script
+3) Paste this code
+4) Deploy -> New deployment -> Web app
+   Execute as: Me
+   Who has access: Anyone
+5) Copy the Web app URL and paste it into GOOGLE_SHEETS_WEBAPP_URL above
+
+function doPost(e) {
+  try {
+    var raw = e.postData && e.postData.contents ? e.postData.contents : "{}";
+    var data = JSON.parse(raw);
+
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName('Applications');
+    if (!sheet) {
+      sheet = ss.insertSheet('Applications');
+      sheet.appendRow(['submitted_at','name','email','city','arena','date','building','learning','trust']);
+    }
+
+    sheet.appendRow([
+      data.submitted_at || new Date().toISOString(),
+      data.name || "",
+      data.email || "",
+      data.city || "",
+      data.arena || "",
+      data.date || "",
+      data.building || "",
+      data.learning || "",
+      data.trust || ""
+    ]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: false, error: String(err) }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+-->
+
 </body>
 </html>
